@@ -4,6 +4,7 @@ Manifest.txt
 README.rdoc
 Rakefile
 lib/bdoc.rb
+templates/bdoc.css
 templates/index.html
 templates/jquery.js
 templates/screen.css
