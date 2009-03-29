@@ -8,6 +8,10 @@ A SERVER FOR VIEWING... not like gem server does!
 If you use this, I highly suggest also using 
 Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
 
+== Demo
+
+  http://manalang.com/bdoc
+
 == Install
 
   [sudo] gem install manalang-bdoc
