@@ -10,6 +10,7 @@ $hoe = Hoe.new('bdoc', Bdoc::VERSION) do |p|
   p.rubyforge_name       = p.name # TODO this is default value
   p.extra_deps         = [
     ['launchy','>= 0.3.3'],
+    ['json','>= 1.1.3'],
   ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]

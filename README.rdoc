@@ -1,26 +1,23 @@
-= bdoc
+= Bdoc
 
-* FIX (url)
+Bdoc is a simpler replacemet for gem server.  All it does is look at all of
+the Gems you have installed locally then creates a nice iframe based
+browser that makes it easy to navigate between gem docs.
 
-== DESCRIPTION:
+If you use this, I highly suggest also using 
+<a href="http://github.com/mislav/hanna/tree/master">Hanna</a>(a beautiful 
+rdoc theme).
 
-FIX (describe your package)
+== Install
 
-== FEATURES/PROBLEMS:
+  [sudo] gem install manalang-bdoc
 
-* FIX (list of features or problems)
+== Usage
 
-== SYNOPSIS:
+  bdoc
 
-  FIX (code sample of usage)
-
-== REQUIREMENTS:
-
-* FIX (list of requirements)
-
-== INSTALL:
-
-* FIX (sudo gem install, anything else)
+That's it This will create an index of all your local gems then launch your 
+default browser.  Enjoy!
 
 == LICENSE:
 
