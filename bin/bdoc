@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'lib/bdoc'
+output = Bdoc.generate_index
+`open #{output}`

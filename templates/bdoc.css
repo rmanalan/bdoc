@@ -1,0 +1,40 @@
+a, a:link, a:visited { color:#333; padding:2px 3px; text-decoration:none; }
+a:hover { color:#000; background:#999; -moz-border-radius: 5px; text-decoration:underline}
+body { background: #aaa }
+#navbar {
+  height:25px;
+  margin:2px 0 0 5px;
+}
+#nav {
+  position:absolute;
+  top:19px;
+  left:7px;
+  padding:10px;
+  width:80%;
+  z-index:1;
+  background:#eee;
+  border:4px solid #ccc;
+  overflow:auto;
+  display:none;
+  -moz-border-radius:10px;
+}
+.gemname {
+  font-size:1.2em;
+}
+.version {
+  font-size:.9em;
+  color:#666;
+}
+#viewport {
+  position:absolute;
+  top:25px;
+  width:100%;
+  border:0;
+  z-index:0;
+}
+#viewport iframe {
+  width:100%;
+  height:100%;
+  border:0;
+}
+

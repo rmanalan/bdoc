@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  lang="en">
+  <head>
+    <title>Bdoc &mdash; Your Local Gem Browser</title>
+    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="screen.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="bdoc.css" type="text/css" media="screen" />
+    <script type="text/javascript" language="javascript" charset="utf-8">
+      // <![CDATA[
+      $ = jQuery;
+      var resizeViewport = function() {
+        $("#viewport").height($(window).height() - $("#navbar").height());
+        $("#viewport").width($(window).width());
+      };
+      var selectGem = function() {
+        $('#viewport iframe').attr('src',this.href);$('#nav').toggle()
+        $('#current').html($(this).parent().html());
+        $('#current a').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
+        return false;
+      };
+      $(function(){
+        resizeViewport();
+        $(window).bind('resize', resizeViewport);
+        $('#nav a.gemname').bind('click',selectGem);
+      });
+      // ]]>
+    </script>
+  </head>
+  <body>
+    <div id="navbar">
+      <strong><a href="#" onclick="$('#nav').toggle()" class="loud bold" title="Click here to see the index of Gem docs">Bdoc &rarr;</a></strong>
+      <span id="current"></span>
+    </div>
+    <div id="viewport">
+      <iframe src="/Library/Ruby/Gems/1.8/doc/actionwebservice-1.2.6/rdoc/index.html"></iframe>
+    </div>
+    <div id="nav">
+      <% @gems.each do |gem| %>
+      <span class="gem">
+        <a href="<%= gem[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
+        <span class="version"><%= gem[:version] %></span>
+      </span>,
+      <% end %>
+    </div>
+  </body>
+</html>

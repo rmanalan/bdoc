@@ -1,0 +1,12 @@
+bin/bdoc
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+lib/bdoc.rb
+templates/index.html
+templates/jquery.js
+templates/screen.css
+test/test_bdoc.rb
+test/test_helper.rb
