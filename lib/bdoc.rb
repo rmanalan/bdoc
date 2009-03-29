@@ -4,36 +4,63 @@ $:.unshift(File.dirname(__FILE__)) unless
 require 'rubygems'
 require 'erb'
 require 'tmpdir'
+require 'launchy'
+require 'json'
 
 module Bdoc
   VERSION = '0.1.0'
+
   class << self
+    attr_accessor :output_dir
+    attr_accessor :output_index
+
+    def rdoc_file(gem_name)
+      File.join(Gem.dir, "doc", gem_name, "rdoc", "index.html")
+    end
+
     def gems_with_doc_index
-      Gem::Specification.list.map { |g|
-        rdoc_index = File.join(Gem.dir, "doc", g.full_name, "rdoc", "index.html")
+      gems = Gem::Specification.list.map { |g|
+        rdoc_index = rdoc_file(g.full_name)
         if File.exist?(rdoc_index)
-          { :name => g.name,
-            :version => g.version,
-            :homepage => g.homepage,
-            :description => g.description, :rdoc_index => rdoc_index } if g.has_rdoc?
+          g.name if g.has_rdoc?
         end
-      }.compact
+      }.compact.uniq.sort{|x,y| x.downcase <=> y.downcase}
+      gems = gems.map do |g|
+        gem = Gem::Specification.list.find_all{|gem| gem.name == g}.last
+        { :name => g,
+          :description => gem.description,
+          :homepage => gem.homepage,
+          :versions => Gem::Specification.list.find_all{|gem| 
+            gem.name == g && File.exist?(rdoc_file(gem.full_name))
+          }.map{|gem|
+            rdoc_index = File.join(Gem.dir, "doc", gem.full_name, "rdoc", "index.html")
+            { :version => gem.version.version,
+              :rdoc_index => rdoc_index
+            }
+          #removes dups since uniq doesn't work on array of hashes
+          }.compact.sort_by{|g|g[:version]}.inject([]){|result,h| 
+            result << h unless result.include?(h)
+            result
+          }
+        }
+      end
     end
 
     def generate_index
       @gems = gems_with_doc_index
       index = ERB.new(File.read(File.join("templates","index.html"))).result(binding)
-      tmpdir = File.join(Dir.tmpdir,"bdoc")
-      output = File.join(tmpdir,"index.html")
-      Dir.mkdir(tmpdir) unless File.exists?(tmpdir)
-      File.open(output,"w") {|f| f.write(index)}
-      copy_assets(tmpdir)
-      output
+      Dir.mkdir(output_dir) unless File.exists?(output_dir)
+      File.open(output_index,"w") {|f| f.write(index)}
+      FileUtils.cp_r Dir.glob('templates/*.js'), output_dir
+      FileUtils.cp_r Dir.glob('templates/*.css'), output_dir
     end
 
-    def copy_assets(tmpdir)
-      FileUtils.cp_r Dir.glob('templates/*.js'), tmpdir
-      FileUtils.cp_r Dir.glob('templates/*.css'), tmpdir
+    def open
+      generate_index
+      Launchy::Browser.run(output_index)
     end
   end
+
+  self.output_dir = File.join(Dir.tmpdir,"bdoc")
+  self.output_index = File.join(@output_dir,"index.html")
 end

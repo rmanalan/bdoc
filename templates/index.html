@@ -7,21 +7,40 @@
     <link rel="stylesheet" href="bdoc.css" type="text/css" media="screen" />
     <script type="text/javascript" language="javascript" charset="utf-8">
       // <![CDATA[
+      var gems = <%= @gems.to_json %>;
       $ = jQuery;
+      var test;
       var resizeViewport = function() {
-        $("#viewport").height($(window).height() - $("#navbar").height());
+        $("#viewport").height($(window).height() - $("#navbar").height() - 1);
         $("#viewport").width($(window).width());
       };
       var selectGem = function() {
-        $('#viewport iframe').attr('src',this.href);$('#nav').toggle()
-        $('#current').html($(this).parent().html());
-        $('#current a').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
+        var viewport = $("#viewport iframe");
+        viewport.attr('src',this.href).show();
+        $('#nav').toggle();
+        var selectedGem = $(this).clone();
+        var selectedVer = $(this).siblings('span.version').text();
+        var versions = $.map($.grep(gems, function(n,i) {return (n.name == selectedGem.text())})[0].versions,
+          function(n) { 
+          var selected = '';
+            if(n.version==selectedVer) {
+              selected = ' selected'; }
+            return ("<a href='" + n.rdoc_index + "' class='version"+ selected +"'>" + n.version + "</a>")
+          });
+        $('#current').html($(this).clone()).append(" <span class='quiet'>" + versions.join("&nbsp;&nbsp;") + "</span>");
+        $('#current a.gemname').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
         return false;
       };
       $(function(){
         resizeViewport();
         $(window).bind('resize', resizeViewport);
         $('#nav a.gemname').bind('click',selectGem);
+        $('#current a.version').live('click',function(){
+          $(this).siblings('a.version').removeClass('selected');
+          $(this).addClass('selected');
+          $('#viewport iframe').attr('src',this.href);
+          return false;
+        });
       });
       // ]]>
     </script>
@@ -30,16 +49,14 @@
     <div id="navbar">
       <strong><a href="#" onclick="$('#nav').toggle()" class="loud bold" title="Click here to see the index of Gem docs">Bdoc &rarr;</a></strong>
       <span id="current"></span>
+      <a id="about" class="quiet" href="http://github.com/manalang/bdoc/tree" onclick="window.open(this.href);return false;">fork_me@github</a>
     </div>
     <div id="viewport">
-      <iframe src="/Library/Ruby/Gems/1.8/doc/actionwebservice-1.2.6/rdoc/index.html"></iframe>
+      <iframe class="hide" src=""></iframe>
     </div>
     <div id="nav">
       <% @gems.each do |gem| %>
-      <span class="gem">
-        <a href="<%= gem[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
-        <span class="version"><%= gem[:version] %></span>
-      </span>,
+      <span class="gem"><a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a><span class="version hide"><%= gem[:versions].last[:version] %></span></span>
       <% end %>
     </div>
   </body>
