@@ -5,7 +5,7 @@ require 'rubygems'
 require 'erb'
 require 'tmpdir'
 require 'launchy'
-require 'json'
+require 'json/pure'
 
 module Bdoc
   VERSION = '0.1.2'

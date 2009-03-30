@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'lib/bdoc'
+require File.dirname(__FILE__) + '/../lib/bdoc'
 Bdoc.open
