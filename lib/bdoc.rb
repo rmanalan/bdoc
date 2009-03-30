@@ -8,7 +8,7 @@ require 'launchy'
 require 'json'
 
 module Bdoc
-  VERSION = '0.1.1'
+  VERSION = '0.1.2'
 
   class << self
     attr_accessor :output_dir
@@ -48,7 +48,7 @@ module Bdoc
 
     def generate_index
       @gems = gems_with_doc_index
-      index = ERB.new(File.read(File.join("templates","index.html"))).result(binding)
+      index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","index.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w") {|f| f.write(index)}
       FileUtils.cp_r Dir.glob('templates/*.js'), output_dir

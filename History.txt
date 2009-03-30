@@ -1,4 +1,9 @@
-== 0.1.1 2009.03-29
+== 0.1.2 2009-03-30
+
+* 1 bug fix:
+  * have to user absolute path when writing out index.html
+
+== 0.1.1 2009-03-29
 
 * 1 bux fix:
   * forgot to include a stylesheet

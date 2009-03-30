@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bdoc}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rich Manalang"]
-  s.date = %q{2009-03-29}
+  s.date = %q{2009-03-30}
   s.default_executable = %q{bdoc}
   s.description = %q{Bdoc is a simple replacement for gem server that doesn't require running a server and is much nicer to browse.}
   s.email = ["rich.manalang@gmail.com"]
