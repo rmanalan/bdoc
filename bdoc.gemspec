@@ -8,13 +8,13 @@ Gem::Specification.new do |s|
   s.authors = ["Rich Manalang"]
   s.date = %q{2009-03-29}
   s.default_executable = %q{bdoc}
-  s.description = %q{}
+  s.description = %q{Bdoc is a simple replacement for gem server that doesn't require running a server and is much nicer to browse.}
   s.email = ["rich.manalang@gmail.com"]
   s.executables = ["bdoc"]
-  s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc"]
+  s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.rdoc","lib/bdoc.rb"]
   s.files = ["bin/bdoc", "History.txt", "Manifest.txt", "README.rdoc", "Rakefile", "lib/bdoc.rb", "templates/index.html", "templates/jquery.js", "templates/screen.css", "test/test_bdoc.rb", "test/test_helper.rb"]
   s.has_rdoc = true
-  s.homepage = %q{Bdoc is a simple replacement for gem server that doesn't require running a server and is much nicer to browse.}
+  s.homepage = "http://github.com/manalang/bdoc/tree/master"
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{bdoc}
