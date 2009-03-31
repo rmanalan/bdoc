@@ -26,7 +26,11 @@
             if(n.version==selectedVer) {
               selected = ' selected'; 
             }
-            return ("<a href='" + n.rdoc_index + "' class='version"+ selected +"'>" + n.version + "</a>")
+            if(n.rdoc_index == null) {
+              return "";
+            } else {
+              return ("<a href='" + n.rdoc_index + "' class='version"+ selected +"'>" + n.version + "</a>");
+            }
           });
         $('#current').html($(this).clone()).append(" <span class='quiet'>" + versions.join("&nbsp;&nbsp;") + "</span>");
         $('#current a.gemname').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
