@@ -11,7 +11,10 @@ a.gemname:hover {
 }
 body { background: #aaa }
 #about {
-  float:right;
+  position:absolute;
+  top:3px;
+  right:14px;
+  font-weight:bold;
   text-decoration:none;
 }
 #navbar {
