@@ -8,7 +8,7 @@ require 'launchy'
 require 'json/pure'
 
 module Bdoc
-  VERSION = '0.1.4'
+  VERSION = '0.1.5'
 
   class << self
     attr_accessor :output_dir
@@ -49,8 +49,8 @@ module Bdoc
       index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","index.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w") {|f| f.write(index)}
-      FileUtils.cp_r Dir.glob('templates/*.js'), output_dir
-      FileUtils.cp_r Dir.glob('templates/*.css'), output_dir
+      FileUtils.cp_r Dir.glob(File.join(File.dirname(__FILE__), '..', "templates","*.js")), output_dir
+      FileUtils.cp_r Dir.glob(File.join(File.dirname(__FILE__), '..', "templates","*.css")), output_dir
     end
 
     def open
