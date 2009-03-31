@@ -24,11 +24,13 @@
           function(n) { 
           var selected = '';
             if(n.version==selectedVer) {
-              selected = ' selected'; }
+              selected = ' selected'; 
+            }
             return ("<a href='" + n.rdoc_index + "' class='version"+ selected +"'>" + n.version + "</a>")
           });
         $('#current').html($(this).clone()).append(" <span class='quiet'>" + versions.join("&nbsp;&nbsp;") + "</span>");
         $('#current a.gemname').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
+        document.title = $(this).clone().text() + "-" + selectedVer + " - Bdoc"; 
         return false;
       };
       $(function(){
@@ -39,6 +41,7 @@
           $(this).siblings('a.version').removeClass('selected');
           $(this).addClass('selected');
           $('#viewport iframe').attr('src',this.href);
+          document.title = $(this).parent().siblings('a.gemname').text() +"-"+ $(this).text()  + " - Bdoc"; 
           return false;
         });
       });
@@ -56,8 +59,16 @@
     </div>
     <div id="nav">
       <% @gems.each do |gem| %>
-      <span class="gem"><a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a><span class="version hide"><%= gem[:versions].last[:version] %></span></span>
+      <span class="gem">
+        <% if gem[:versions].last[:rdoc_index]  %>
+        <a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
+        <% else %>
+        <span class="gemname quiet" title="<%= gem[:description] %>">*<%= gem[:name] %></span>
+        <% end %>
+        <span class="version hide"><%= gem[:versions].last[:version] %></span>
+      </span>
       <% end %>
+      <p><em class="quiet">* Rdocs for these Gems are not installed</em></p>
     </div>
   </body>
 </html>

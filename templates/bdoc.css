@@ -8,7 +8,7 @@ a.gemname:hover {
   background:#999; 
   -moz-border-radius: 2px; 
   -webkit-border-radius: 2px; 
-  text-decoration:underline}
+}
 body { background: #aaa }
 #about {
   float:right;
@@ -40,7 +40,7 @@ body { background: #aaa }
   background:#eee;
   border:6px solid #555;
   overflow:auto;
-  line-height:2em;
+  line-height:2.5em;
   text-align:justify;
   -moz-border-radius-bottomleft:20px;
   -moz-border-radius-bottomright:20px;
@@ -53,6 +53,9 @@ body { background: #aaa }
 }
 #nav .gemname {
   font-size:1.2em;
+}
+#nav span.gemname {
+  color:#aaa;
 }
 .version {
   font-size:.9em;

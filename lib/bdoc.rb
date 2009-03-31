@@ -8,7 +8,7 @@ require 'launchy'
 require 'json/pure'
 
 module Bdoc
-  VERSION = '0.1.2'
+  VERSION = '0.1.4'
 
   class << self
     attr_accessor :output_dir
@@ -19,29 +19,27 @@ module Bdoc
     end
 
     def gems_with_doc_index
-      gems = Gem::Specification.list.map { |g|
-        rdoc_index = rdoc_file(g.full_name)
-        if File.exist?(rdoc_index)
-          g.name if g.has_rdoc?
-        end
+      installed_gems = Gem::SourceIndex.from_installed_gems.gems.map{|k,v|v}
+      gems = installed_gems.map { |g|
+        g.name if g.has_rdoc?
       }.compact.uniq.sort{|x,y| x.downcase <=> y.downcase}
       gems = gems.map do |g|
-        gem = Gem::Specification.list.find_all{|gem| gem.name == g}.last
+        gem = installed_gems.find_all{|gem| gem.name == g}.last
         { :name => g,
           :description => gem.description,
           :homepage => gem.homepage,
-          :versions => Gem::Specification.list.find_all{|gem| 
-            gem.name == g && File.exist?(rdoc_file(gem.full_name))
-          }.map{|gem|
-            rdoc_index = File.join(Gem.dir, "doc", gem.full_name, "rdoc", "index.html")
-            { :version => gem.version.version,
-              :rdoc_index => rdoc_index
+          :versions => installed_gems.find_all{|gem| 
+            gem.name == g
+            }.map{|gem|
+              rdoc_index = File.join(gem.full_gem_path,"..","..","doc",gem.full_name, "rdoc","index.html")
+              { :version => gem.version.version,
+                :rdoc_index => (File.exist?(rdoc_index) ? rdoc_index : nil)
+              }
+            #removes dups since uniq doesn't work on array of hashes
+            }.compact.sort_by{|g|g[:version]}.inject([]){|result,h| 
+              result << h unless result.include?(h)
+              result
             }
-          #removes dups since uniq doesn't work on array of hashes
-          }.compact.sort_by{|g|g[:version]}.inject([]){|result,h| 
-            result << h unless result.include?(h)
-            result
-          }
         }
       end
     end
