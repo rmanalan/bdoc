@@ -5,10 +5,10 @@ require 'rubygems'
 require 'erb'
 require 'tmpdir'
 require 'launchy'
-require 'json/pure'
+require 'json'
 
 module Bdoc
-  VERSION = '0.1.9'
+  VERSION = '0.2.0'
 
   class << self
     attr_accessor :output_dir
@@ -51,7 +51,6 @@ module Bdoc
       File.open(output_index,"w") {|f| f.write(index)}
       FileUtils.cp File.join(File.dirname(__FILE__), '..', "templates","jquery.js"), output_dir
       FileUtils.cp File.join(File.dirname(__FILE__), '..', "templates","screen.css"), output_dir
-      FileUtils.cp File.join(File.dirname(__FILE__), '..', "templates","bdoc.css"), output_dir
     end
 
     def open
