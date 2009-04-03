@@ -1,3 +1,8 @@
+== 0.1.9 2009-04-02
+
+* 1 bug fix
+  * more path issues... yet again.
+  
 == 0.1.8 2009-03-30
 
 * 1 bug fix
