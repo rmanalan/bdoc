@@ -154,7 +154,7 @@ body { background: #aaa }
       <% @gems.each do |gem| %>
       <span class="gem">
         <% if gem[:versions].last[:rdoc_index]  %>
-        <a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
+        <a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= ERB::Util.h gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
         <% else %>
         <span class="gemname quiet" title="<%= gem[:description] %>">*<%= gem[:name] %></span>
         <% end %>
