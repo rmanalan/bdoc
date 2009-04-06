@@ -8,7 +8,7 @@ require 'launchy'
 require 'json'
 
 module Bdoc
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 
   class << self
     attr_accessor :output_dir

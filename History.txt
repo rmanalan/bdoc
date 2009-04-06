@@ -1,3 +1,9 @@
+== 0.2.1 2009-04-06
+
+* 2 bug fixes from vesan
+  * Fix CSS to prevent gem list from blowing up in Safari 4 Beta
+  * HTML escape gem descriptions
+
 == 0.1.9 2009-04-02
 
 * 1 bug fix
