@@ -23,6 +23,12 @@ http://img.skitch.com/20090406-8bhnftitwtrpd5xeu4acexerm6.png
 That's it!  This will create an index of all your local gems then launch your 
 default browser.  Enjoy!
 
+=== Specify output directory
+
+Optionally you can specify the output directory on the command line:
+
+  bdoc /path/to/bdoc
+
 == LICENSE:
 
 (The MIT License)
