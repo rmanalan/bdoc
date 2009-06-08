@@ -59,6 +59,6 @@ module Bdoc
     end
   end
 
-  self.output_dir = File.join(Dir.tmpdir,"bdoc")
+  self.output_dir = ARGV[0] || File.join(Dir.tmpdir,"bdoc")
   self.output_index = File.join(@output_dir,"index.html")
 end
