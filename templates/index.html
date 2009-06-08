@@ -155,7 +155,7 @@ body { background: #aaa }
         <% if gem[:versions].last[:rdoc_index]  %>
         <a href="<%= gem[:versions].last[:rdoc_index] %>" class="gemname" title="<%= ERB::Util.h gem[:description] %>" rel="<%= gem[:homepage] %>"><%= gem[:name] %></a>
         <% else %>
-        <span class="gemname quiet" title="<%= gem[:description] %>">*<%= gem[:name] %></span>
+        <span class="gemname quiet" title="<%= ERB::Util.h gem[:description] %>">*<%= gem[:name] %></span>
         <% end %>
         <span class="version hide"><%= gem[:versions].last[:version] %></span>
       </span>

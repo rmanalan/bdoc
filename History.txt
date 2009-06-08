@@ -1,3 +1,8 @@
+== 0.2.2 2009-06-08
+
+* 1 new feature from csexton -- Thanks!
+  * Ability to specify an output directory
+
 == 0.2.1 2009-04-06
 
 * 2 bug fixes from vesan
