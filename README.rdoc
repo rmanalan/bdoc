@@ -1,5 +1,9 @@
 = Bdoc
 
+* http://github.com/#{github_username}/#{project_name}
+
+== DESCRIPTION:
+
 Bdoc is a simple replacement for gem server.  All it does is look at all of
 the Gems you have installed locally and creates a nice iframe based
 browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
