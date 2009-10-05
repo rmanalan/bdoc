@@ -1,6 +1,6 @@
 = Bdoc
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/manalang/bdoc
 
 == DESCRIPTION:
 
