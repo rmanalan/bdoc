@@ -1,3 +1,9 @@
+== 0.3.0 2011-03-13
+
+* 2 new features
+  * Filter local gems using a filter box
+  * New CSS styling
+
 == 0.2.2 2009-06-08
 
 * 1 new feature from csexton -- Thanks!

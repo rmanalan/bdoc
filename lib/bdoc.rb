@@ -5,10 +5,10 @@ require 'rubygems'
 require 'erb'
 require 'tmpdir'
 require 'launchy'
-require 'json'
+require 'yajl/json_gem'
 
 module Bdoc
-  VERSION = '0.2.2'
+  VERSION = '0.3.0'
 
   class << self
     attr_accessor :output_dir
