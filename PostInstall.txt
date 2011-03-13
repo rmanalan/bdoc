@@ -1,0 +1,12 @@
+To improve your Bdoc experience, I highly recommend you install the Hanna gem
+
+    [sudo] gem install hanna
+
+This will make your Rdocs looks so much better. After you install Hanna, you'll
+need to rebuild all of your Rdocs. In order to do that, add this to your ~/.gemrc:
+
+    rdoc: --inline-source --line-numbers --format=html --template=hanna
+
+...then rebuild:
+
+    [sudo] gem rdoc --all --overwrite --no-ri

@@ -16,7 +16,7 @@ $hoe = Hoe.spec 'bdoc' do
   self.rubyforge_name       = self.name # TODO this is default value
   self.extra_deps         = [
     ['launchy','>= 0.3.3'],
-    ['json','>= 1.1.3'],
+    ['multi_json','>= 0.0.5'],
   ]
 end
 

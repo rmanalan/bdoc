@@ -5,7 +5,7 @@ require 'rubygems'
 require 'erb'
 require 'tmpdir'
 require 'launchy'
-require 'yajl/json_gem'
+require 'multi_json'
 
 module Bdoc
   VERSION = '0.3.0'
@@ -46,11 +46,10 @@ module Bdoc
 
     def generate_index
       @gems = gems_with_doc_index
+      @gems_json = MultiJson.encode(@gems)
       index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","index.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w") {|f| f.write(index)}
-      FileUtils.cp File.join(File.dirname(__FILE__), '..', "templates","jquery.js"), output_dir
-      FileUtils.cp File.join(File.dirname(__FILE__), '..', "templates","screen.css"), output_dir
     end
 
     def open

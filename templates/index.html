@@ -164,7 +164,7 @@ a.gemname:hover, a.version:hover {
     </style>
     <script type="text/javascript" language="javascript" charset="utf-8">
       // <![CDATA[
-      var gems = <%= @gems.to_json %>;
+      var gems = <%= @gems_json %>;
       var test;
       var resizeViewport = function() {
         $("#viewport").height($(window).height() - $("#navbar").height() - 1);
