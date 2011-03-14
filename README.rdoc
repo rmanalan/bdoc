@@ -1,9 +1,5 @@
 = Bdoc
 
-* http://github.com/manalang/bdoc
-
-== DESCRIPTION:
-
 Bdoc is a simple replacement for gem server.  All it does is look at all of
 the Gems you have installed locally and creates a nice iframe based
 browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
@@ -14,11 +10,11 @@ Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
 
 Check out the demo http://manalang.github.com/bdoc
 
-http://img.skitch.com/20090406-8bhnftitwtrpd5xeu4acexerm6.png
+https://img.skitch.com/20110314-1xgsk2prxisirifc923fwb7htc.png
 
 == Install
 
-  [sudo] gem install manalang-bdoc
+  [sudo] gem install bdoc
 
 == Usage
 
@@ -33,11 +29,27 @@ Optionally you can specify the output directory on the command line:
 
   bdoc /path/to/bdoc
 
+== Bonus
+
+To improve your Bdoc experience, I highly recommend you install the Hanna gem
+
+  [sudo] gem install hanna
+
+This will make your Rdocs looks so much better. After you install Hanna, you'll
+need to rebuild all of your Rdocs. In order to do that, add this to your ~/.gemrc:
+
+  rdoc: --inline-source --line-numbers --format=html --template=hanna
+
+...then rebuild:
+
+  [sudo] gem rdoc --all --overwrite --no-ri
+
+
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 Rich Manalang
+Copyright (c) 2011 Rich Manalang
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

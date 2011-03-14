@@ -1,3 +1,8 @@
+== 0.3.1 2011-03-14
+
+* 1 cleanup
+  * Updated README
+
 == 0.3.0 2011-03-13
 
 * 3 new features

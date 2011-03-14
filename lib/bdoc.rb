@@ -8,7 +8,7 @@ require 'launchy'
 require 'multi_json'
 
 module Bdoc
-  VERSION = '0.3.0'
+  VERSION = '0.3.1'
 
   class << self
     attr_accessor :output_dir
