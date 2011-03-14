@@ -1,6 +1,6 @@
 = Bdoc
 
-Bdoc is a simple replacement for gem server.  All it does is look at all of
+Bdoc is a simple replacement for the gem or yard server.  All it does is look at all of
 the Gems you have installed locally and creates a nice iframe based
 browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
 A SERVER FOR VIEWING... not like gem server does!
@@ -10,7 +10,7 @@ Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
 
 Check out the demo http://manalang.github.com/bdoc
 
-https://img.skitch.com/20110314-1xgsk2prxisirifc923fwb7htc.png
+http://img.skitch.com/20110314-1xgsk2prxisirifc923fwb7htc.png
 
 == Install
 
