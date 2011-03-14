@@ -14,7 +14,7 @@ else
 end
 
 module Bdoc
-  VERSION = '0.3.2'
+  VERSION = '0.3.3'
 
   class << self
     attr_accessor :output_dir
