@@ -8,7 +8,7 @@ A SERVER FOR VIEWING... not like gem server does!
 If you use this, I highly suggest also using 
 Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
 
-Check out the demo http://manalang.github.com/bdoc
+Check out the demo http://manalang.github.com/bdoc/bdoc.html
 
 http://img.skitch.com/20110314-1xgsk2prxisirifc923fwb7htc.png
 
