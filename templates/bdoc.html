@@ -165,9 +165,8 @@ a.gemname:hover, a.version:hover {
     <script>
       // <![CDATA[
       var gems = <%= @gems_json %>;
-      var test;
       var resizeViewport = function() {
-        $("#viewport").height($(window).height() - $("#navbar").height() - 1);
+        $("#viewport").height($(window).height() - $("#navbar").outerHeight() - 1);
         $("#viewport").width($(window).width());
       };
       var selectGem = function() {
