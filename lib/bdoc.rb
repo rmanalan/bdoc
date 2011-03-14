@@ -7,6 +7,12 @@ require 'tmpdir'
 require 'launchy'
 require 'multi_json'
 
+if VERSION == /^1.9/
+  Encoding.default_internal = 'UTF-8'
+else
+  $KCODE = "u"
+end
+
 module Bdoc
   VERSION = '0.3.2'
 
@@ -47,6 +53,7 @@ module Bdoc
     def generate_index
       @gems = gems_with_doc_index
       @gems_json = MultiJson.encode(@gems)
+
       index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","bdoc.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w") {|f| f.write(index)}

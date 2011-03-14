@@ -1,5 +1,7 @@
 = Bdoc
 
+http://github.com/manalang/bdoc
+
 http://img.skitch.com/20110314-df4nt8pyuw4ddnjtc1fast9nds.png
 
 == Description

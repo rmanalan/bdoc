@@ -1,3 +1,8 @@
+== 0.3.3 2011-03-14
+
+* 1 bug fix
+  * explicitely set encoding
+
 == 0.3.2 2011-03-14
 
 * 1 bug fix
