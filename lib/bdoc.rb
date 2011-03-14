@@ -47,7 +47,7 @@ module Bdoc
     def generate_index
       @gems = gems_with_doc_index
       @gems_json = MultiJson.encode(@gems)
-      index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","index.html"))).result(binding) 
+      index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","bdoc.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w") {|f| f.write(index)}
     end
@@ -58,6 +58,6 @@ module Bdoc
     end
   end
 
-  self.output_dir = ARGV[0] || File.join(Dir.tmpdir,"bdoc")
-  self.output_index = File.join(@output_dir,"index.html")
+  self.output_dir = ARGV[0] || Dir.tmpdir
+  self.output_index = File.join(@output_dir,"bdoc.html")
 end

@@ -1,8 +1,9 @@
 == 0.3.0 2011-03-13
 
-* 2 new features
+* 3 new features
   * Filter local gems using a filter box
   * New CSS styling
+  * Changed output to bdoc.html and inlined jquery
 
 == 0.2.2 2009-06-08
 
