@@ -56,7 +56,7 @@ module Bdoc
 
       index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","bdoc.html"))).result(binding) 
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
-      File.open(output_index,"w") {|f| f.write(index)}
+      File.open(output_index,"w:UTF-8") {|f| f.write(index)}
     end
 
     def open
