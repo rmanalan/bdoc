@@ -1,5 +1,7 @@
 = Bdoc
 
+== Description
+
 Bdoc is a simple replacement for the gem or yard server.  All it does is look at all of
 the Gems you have installed locally and creates a nice iframe based
 browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
