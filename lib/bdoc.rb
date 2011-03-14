@@ -7,7 +7,7 @@ require 'tmpdir'
 require 'launchy'
 require 'multi_json'
 
-if RUBY_VERSION == /^1.9/
+if defined?(Encoding)
   Encoding.default_internal = 'UTF-8'
 else
   $KCODE = "u"
