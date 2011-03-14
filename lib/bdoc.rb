@@ -7,14 +7,14 @@ require 'tmpdir'
 require 'launchy'
 require 'multi_json'
 
-if VERSION == /^1.9/
+if RUBY_VERSION == /^1.9/
   Encoding.default_internal = 'UTF-8'
 else
   $KCODE = "u"
 end
 
 module Bdoc
-  VERSION = '0.3.3'
+  VERSION = '0.3.4'
 
   class << self
     attr_accessor :output_dir

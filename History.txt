@@ -1,3 +1,8 @@
+== 0.3.4 2011-03-14
+
+* 1 bug fix
+  * Use RUBY_VERSION instead of VERSION. VERSION doesn't work in windows
+
 == 0.3.3 2011-03-14
 
 * 1 bug fix
