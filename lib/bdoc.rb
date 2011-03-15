@@ -39,7 +39,7 @@ module Bdoc
             }.map{|gem|
               rdoc_index = File.join(gem.full_gem_path,"..","..","doc",gem.full_name, "rdoc","index.html")
               { :version => gem.version.version,
-                :rdoc_index => (File.exist?(rdoc_index) ? rdoc_index : nil)
+                :rdoc_index => (File.exist?(rdoc_index) ? "file://"+rdoc_index : nil)
               }
             #removes dups since uniq doesn't work on array of hashes
             }.compact.sort_by{|g|g[:version]}.inject([]){|result,h| 
