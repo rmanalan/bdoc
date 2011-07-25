@@ -14,7 +14,7 @@ else
 end
 
 module Bdoc
-  VERSION = '0.3.6'
+  VERSION = '0.3.7'
 
   class << self
     attr_accessor :output_dir
@@ -61,7 +61,7 @@ module Bdoc
 
     def open
       generate_index
-      Launchy::Browser.run(output_index)
+      Launchy.open(output_index)
     end
   end
 
