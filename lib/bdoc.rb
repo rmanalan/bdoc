@@ -61,7 +61,7 @@ module Bdoc
 
     def open
       generate_index
-      Launchy.open(output_index)
+      Launchy.open("file:#{output_index}")
     end
   end
 
