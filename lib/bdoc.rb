@@ -14,7 +14,7 @@ else
 end
 
 module Bdoc
-  VERSION = '0.3.7'
+  VERSION = '0.3.8'
 
   class << self
     attr_accessor :output_dir
@@ -25,7 +25,11 @@ module Bdoc
     end
 
     def gems_with_doc_index
-      installed_gems = Gem::SourceIndex.from_installed_gems.gems.map{|k,v|v}
+      if Gem::Version.new(Gem::VERSION) >= Gem::Version.new("1.7.0")
+        installed_gems = Gem::Specification
+      else
+        installed_gems = Gem::SourceIndex.from_installed_gems.gems.map{|k,v|v}
+      end
       gems = installed_gems.map { |g|
         g.name if g.has_rdoc?
       }.compact.uniq.sort{|x,y| x.downcase <=> y.downcase}
@@ -61,7 +65,7 @@ module Bdoc
 
     def open
       generate_index
-      Launchy.open(output_index)
+      Launchy.open("file:#{output_index}")
     end
   end
 
