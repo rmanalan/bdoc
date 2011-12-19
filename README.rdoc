@@ -11,7 +11,7 @@ the Gems you have installed locally and creates a nice iframe based
 browser that makes it easy to navigate between gem docs. IT DOES NOT REQUIRE
 A SERVER FOR VIEWING... not like gem server does!
 
-If you use this, I highly suggest also using 
+If you use this, I highly suggest also using
 Hanna[http://github.com/mislav/hanna/tree/master] (a beautiful rdoc theme).
 
 Check out the demo http://manalang.github.com/bdoc/bdoc.html
@@ -24,7 +24,7 @@ Check out the demo http://manalang.github.com/bdoc/bdoc.html
 
   bdoc
 
-That's it!  This will create an index of all your local gems then launch your 
+That's it!  This will create an index of all your local gems then launch your
 default browser.  Enjoy!
 
 === Specify output directory

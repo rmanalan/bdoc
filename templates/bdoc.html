@@ -7,7 +7,7 @@
     </script>
     <style media="screen">
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
-body { 
+body {
   background: #fff;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size:.8125em;
@@ -18,18 +18,18 @@ a,a:visited,a:active,a:link {
   text-shadow:rgba(255,255,255,.9) 1px 1px 0;
 }
 a:hover {
-  color:#000; 
+  color:#000;
 }
 .hide { display:none}
 a.gemname, a.gemname:link, a.gemname:visited,
-a.version, a.version:link, a.version:visited{ 
-  -moz-border-radius: 2px; 
-  -webkit-border-radius: 2px; 
-  background:rgba(0,0,0,.1); 
-  padding:2px 3px; 
-  text-decoration:none; 
+a.version, a.version:link, a.version:visited{
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background:rgba(0,0,0,.1);
+  padding:2px 3px;
+  text-decoration:none;
 }
-a.gemname:hover, a.version:hover { 
+a.gemname:hover, a.version:hover {
   background:#ffcc00;
   color:#000;
   text-shadow:none;
@@ -176,10 +176,10 @@ a.gemname:hover, a.version:hover {
         var selectedGem = $(this).clone();
         var selectedVer = $(this).siblings('span.version').text();
         var versions = $.map($.grep(gems, function(n,i) {return (n.name === selectedGem.text())})[0].versions,
-          function(n) { 
+          function(n) {
           var selected = '';
             if(n.version===selectedVer) {
-              selected = ' selected'; 
+              selected = ' selected';
             }
             if(n.rdoc_index === null) {
               return "";
@@ -189,7 +189,7 @@ a.gemname:hover, a.version:hover {
           });
         $('#current').html($(this).clone()).append(" <span class='quiet'>" + versions.join("&nbsp;&nbsp;") + "</span>");
         $('#current a.gemname').attr('href',$(this).attr('rel')).click(function(){window.open(this.href);return false;});
-        document.title = $(this).clone().text() + "-" + selectedVer + " - Bdoc"; 
+        document.title = $(this).clone().text() + "-" + selectedVer + " - Bdoc";
         return false;
       };
       $(function(){
@@ -223,7 +223,7 @@ a.gemname:hover, a.version:hover {
           $(this).siblings('a.version').removeClass('selected');
           $(this).addClass('selected');
           $('#viewport iframe').attr('src',this.href);
-          document.title = $(this).parent().siblings('a.gemname').text() +"-"+ $(this).text()  + " - Bdoc"; 
+          document.title = $(this).parent().siblings('a.gemname').text() +"-"+ $(this).text()  + " - Bdoc";
           return false;
         });
       });

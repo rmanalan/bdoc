@@ -38,7 +38,7 @@ module Bdoc
         { :name => g,
           :description => gem.description,
           :homepage => gem.homepage,
-          :versions => installed_gems.find_all{|gem| 
+          :versions => installed_gems.find_all{|gem|
             gem.name == g
             }.map{|gem|
               rdoc_index = File.join(gem.full_gem_path,"..","..","doc",gem.full_name, "rdoc","index.html")
@@ -46,7 +46,7 @@ module Bdoc
                 :rdoc_index => (File.exist?(rdoc_index) ? "file://"+rdoc_index : nil)
               }
             #removes dups since uniq doesn't work on array of hashes
-            }.compact.sort_by{|g|g[:version]}.inject([]){|result,h| 
+            }.compact.sort_by{|g|g[:version]}.inject([]){|result,h|
               result << h unless result.include?(h)
               result
             }
@@ -58,7 +58,7 @@ module Bdoc
       @gems = gems_with_doc_index
       @gems_json = MultiJson.encode(@gems)
 
-      index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","bdoc.html"))).result(binding) 
+      index = ERB.new(File.read(File.join(File.dirname(__FILE__), '..', "templates","bdoc.html"))).result(binding)
       Dir.mkdir(output_dir) unless File.exists?(output_dir)
       File.open(output_index,"w:UTF-8") {|f| f.write(index)}
     end
